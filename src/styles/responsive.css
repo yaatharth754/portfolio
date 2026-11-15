@@ -244,15 +244,6 @@
     border-top: 1px solid var(--line);
   }
 
-  .contact__panel {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 2.6rem;
-  }
-
-  .contact__lead {
-    max-width: 34ch;
-  }
-
   .site-footer__grid {
     grid-template-columns: 1fr 1fr;
     gap: 2.2rem 3rem;
@@ -516,38 +507,6 @@
     font-size: clamp(1.55rem, 5vw, 1.95rem);
   }
 
-  .contact__panel {
-    padding: 1.35rem;
-    border-radius: 18px;
-  }
-
-  .contact__lead {
-    font-size: clamp(1.25rem, 4.4vw, 1.55rem);
-  }
-
-  .contact__details {
-    margin-top: 1.2rem;
-  }
-
-  .contact-list__item {
-    grid-template-columns: 34px minmax(0, 1fr) auto;
-    gap: 0.7rem;
-    padding: 0.7rem 0;
-  }
-
-  .contact-form__row {
-    gap: 0.9rem;
-  }
-
-  .contact__footer-note {
-    margin-top: 1.8rem;
-  }
-
-  .contact__footer-note .text-link {
-    margin-left: 0;
-    width: 100%;
-  }
-
   .site-footer {
     padding-top: 3.2rem;
   }
@@ -794,29 +753,6 @@
     left: 3px;
   }
 
-  .contact-list__body a,
-  .contact-list__body > span:last-child {
-    font-size: 0.78rem;
-  }
-
-  .contact-list__time {
-    display: none;
-  }
-
-  .contact-form__row {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 1rem;
-  }
-
-  .contact-form__footer {
-    gap: 0.8rem;
-  }
-
-  .contact-form__note {
-    flex-basis: 100%;
-    max-width: 42ch;
-  }
-
   .site-footer__grid {
     grid-template-columns: minmax(0, 1fr);
     gap: 1.8rem;
@@ -995,25 +931,6 @@
 
   .carousel-index {
     display: none;
-  }
-
-  .contact__panel {
-    padding: 1.1rem;
-  }
-
-  .contact-list__icon {
-    width: 30px;
-    height: 30px;
-  }
-
-  .contact-list__copy {
-    width: 28px;
-    height: 28px;
-  }
-
-  .contact-list__item {
-    grid-template-columns: 30px minmax(0, 1fr) auto;
-    gap: 0.55rem;
   }
 
   .site-footer__brand {
