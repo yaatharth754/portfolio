@@ -36,7 +36,7 @@ function FaceArt() {
       <ellipse cx="280" cy="140" rx="58" ry="78" fill="none" stroke="rgba(255,255,255,0.14)" strokeWidth="0.7" strokeDasharray="2 5" />
       <path d="M280 42 V238 M204 140 H356" stroke="rgba(255,255,255,0.13)" strokeWidth="0.7" strokeDasharray="2 6" />
       <path d="M280 42 C260 96 258 186 280 238 C302 186 300 96 280 42" fill="none" stroke="rgba(244,166,193,0.7)" strokeWidth="0.9" />
-      <g fill="#b5ff5c">
+      <g fill="#36c96a">
         <circle cx="250" cy="112" r="2.2" />
         <circle cx="310" cy="112" r="2.2" />
         <circle cx="280" cy="138" r="1.6" />
@@ -55,7 +55,7 @@ function FaceArt() {
               y={68 + row * 12}
               width="3"
               height="3"
-              fill={row === 2 && col === 2 ? '#b5ff5c' : 'rgba(255,255,255,0.2)'}
+              fill={row === 2 && col === 2 ? '#36c96a' : 'rgba(255,255,255,0.2)'}
               stroke="none"
             />
           ))
@@ -70,16 +70,16 @@ function FaceArt() {
               y={68 + row * 12}
               width="3"
               height="3"
-              fill={row === 4 && col === 5 ? '#b5ff5c' : 'rgba(255,255,255,0.2)'}
+              fill={row === 4 && col === 5 ? '#36c96a' : 'rgba(255,255,255,0.2)'}
               stroke="none"
             />
           ))
         )}
       </g>
       <rect x="188" y="26" width="184" height="248" rx="4" fill="none" stroke="rgba(244,166,193,0.32)" strokeWidth="0.8" strokeDasharray="14 5 2 5" />
-      <line x1="52" y1="76" x2="508" y2="76" className="project-art__scan" stroke="#b5ff5c" strokeWidth="1" opacity="0.5" />
-      <circle cx="188" cy="26" r="3" fill="#b5ff5c" />
-      <circle cx="372" cy="274" r="3" fill="#b5ff5c" />
+      <line x1="52" y1="76" x2="508" y2="76" className="project-art__scan" stroke="#36c96a" strokeWidth="1" opacity="0.5" />
+      <circle cx="188" cy="26" r="3" fill="#36c96a" />
+      <circle cx="372" cy="274" r="3" fill="#36c96a" />
       <text x="188" y="20" className="project-art__label">01 / FACE MATCH</text>
     </g>
   );
@@ -96,7 +96,7 @@ function PoseArt() {
         <path d="M280 162 L248 216 L238 264" />
         <path d="M280 162 L314 212 L336 252" />
       </g>
-      <g fill="#b5ff5c">
+      <g fill="#36c96a">
         <circle cx="280" cy="104" r="3.2" />
         <circle cx="280" cy="162" r="3.2" />
         <circle cx="248" cy="216" r="2.6" />
@@ -162,7 +162,7 @@ function DocsArt() {
         <path d="M350 166 C396 166 392 262 432 262" opacity="0.5" />
       </g>
       <g>
-        <circle cx="444" cy="98" r="3.4" fill="#b5ff5c" />
+        <circle cx="444" cy="98" r="3.4" fill="#36c96a" />
         <circle cx="452" cy="218" r="2.7" fill="#ffffff" opacity="0.8" />
         <circle cx="432" cy="262" r="2.2" fill="#ffffff" opacity="0.55" />
       </g>

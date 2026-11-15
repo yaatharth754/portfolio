@@ -9,6 +9,36 @@
   overflow: visible;
 }
 
+.glass-logo__y {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: glass-y-turn 8s ease-in-out infinite;
+  filter: drop-shadow(5px 8px 7px rgba(95, 154, 191, .22));
+}
+
+.glass-logo__halo {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: glass-halo-pulse 3.6s ease-in-out infinite;
+}
+
+@keyframes glass-y-turn {
+  0%, 100% { transform: perspective(480px) rotateY(-16deg) rotateX(3deg); }
+  50% { transform: perspective(480px) rotateY(16deg) rotateX(-3deg); }
+}
+
+@keyframes glass-halo-pulse {
+  0%, 100% { opacity: .74; filter: drop-shadow(0 0 5px rgba(50, 102, 196, .5)); }
+  50% { opacity: 1; filter: drop-shadow(0 0 15px rgba(55, 112, 214, .88)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-logo__y,
+  .glass-logo__halo {
+    animation: none;
+  }
+}
+
 /* Parallax layers are driven by --px / --py on the frame. The frame itself
    never moves. */
 .logo-parallax {
@@ -434,7 +464,7 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: linear-gradient(130deg, rgba(181, 255, 92, 0.05), transparent 38%, transparent 72%, rgba(255, 255, 255, 0.03));
+  background: linear-gradient(130deg, rgba(54, 201, 106, 0.05), transparent 38%, transparent 72%, rgba(255, 255, 255, 0.03));
   pointer-events: none;
 }
 

@@ -3,7 +3,7 @@ import { motion, useReducedMotion, useScroll, useSpring } from 'framer-motion';
 import { CircleDot, MapPin } from 'lucide-react';
 import SectionHeading from './SectionHeading';
 import Reveal from './Reveal';
-import { certifications, practicalExperience, profile } from '../data/profile';
+import { certifications, languages, practicalExperience, profile } from '../data/profile';
 
 export default function Experience() {
   const timelineRef = useRef<HTMLDivElement>(null);
@@ -104,6 +104,7 @@ export default function Experience() {
                 Open to internships and collaborative work. Every claim on this
                 page is traceable to a project, a programme, or a result.
               </p>
+              <p>Languages: {languages.join(' · ')}</p>
             </Reveal>
           </aside>
         </div>

@@ -155,6 +155,16 @@ export type Certification = {
 
 export const certifications: Certification[] = [
   {
+    title: 'Oracle Certified AI Foundations Associate',
+    issuer: 'Oracle',
+    date: 'August 2025',
+  },
+  {
+    title: 'Oracle Certified Generative AI Professional',
+    issuer: 'Oracle',
+    date: 'September 2025',
+  },
+  {
     title: '100 Days of Code — Python',
     issuer: 'Self-directed programme',
     date: 'September 2025',
@@ -165,6 +175,8 @@ export const certifications: Certification[] = [
     date: 'June 2026',
   },
 ];
+
+export const languages = ['English', 'Hindi', 'Gujarati', 'Marathi'];
 
 export const practicalExperience = [
   {

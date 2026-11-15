@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowDown, ArrowUpRight, Download, Sparkle } from 'lucide-react';
+import { Sparkle } from 'lucide-react';
 import AngelLogo from './AngelLogo';
 import { profile } from '../data/profile';
 
@@ -122,27 +122,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="hero__emblem"><AngelLogo variant="full" title="Glass winged Y logo with dark blue halo" /></div>
-
-            <div className="hero__actions">
-              <a className="btn btn--solid" href="#projects">
-                <span>Explore My Work</span>
-                <ArrowUpRight size={17} strokeWidth={1.7} aria-hidden="true" />
-              </a>
-              <a className="btn btn--outline" href="#about">
-                <span>About Me</span>
-                <ArrowDown size={16} strokeWidth={1.7} aria-hidden="true" />
-              </a>
-              <a
-                className="hero__resume-link"
-                href={profile.resume}
-                download={profile.resumeName}
-              >
-                <Download size={15} strokeWidth={1.6} aria-hidden="true" />
-                <span>Download Resume</span>
-                <span className="hero__resume-meta">PDF</span>
-              </a>
-            </div>
+            <div className="hero__emblem"><AngelLogo variant="full" title="Rotating transparent glass Y with a glowing dark blue halo" /></div>
           </motion.aside>
         </div>
 

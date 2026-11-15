@@ -67,7 +67,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
       </div>
 
       <div className="loading-screen__mark">
-        <AngelLogo variant="loading" className="loading-screen__logo" title="Yaatharth Bawankar angelic Y mark" />
+        <AngelLogo variant="loading" className="loading-screen__logo" title="Yaatharth Bawankar glass Y mark" />
       </div>
 
       <div className="loading-screen__footer">

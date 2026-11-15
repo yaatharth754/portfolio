@@ -206,7 +206,7 @@
   inset: 0;
   background:
     radial-gradient(120% 120% at 22% 20%, #2a4a77 0%, transparent 52%),
-    radial-gradient(90% 100% at 78% 90%, rgba(181, 255, 92, 0.24), transparent 58%),
+    radial-gradient(90% 100% at 78% 90%, rgba(54, 201, 106, 0.24), transparent 58%),
     linear-gradient(128deg, #0a0a0b 0%, #1c355a 48%, #0a0a0b 100%);
 }
 
@@ -224,7 +224,7 @@
   inset: 0;
   opacity: 0;
   background:
-    radial-gradient(70% 100% at 30% 35%, rgba(181, 255, 92, 0.2), transparent 55%),
+    radial-gradient(70% 100% at 30% 35%, rgba(54, 201, 106, 0.2), transparent 55%),
     radial-gradient(60% 100% at 78% 20%, rgba(77, 112, 168, 0.45), transparent 60%),
     linear-gradient(115deg, #101012 10%, #1b355b 55%, #0a0a0b 100%);
   transition: opacity 500ms var(--ease-soft);
@@ -391,8 +391,8 @@
 
 .skill-card:hover {
   transform: translateY(-3px);
-  border-color: rgba(181, 255, 92, 0.36);
-  background: linear-gradient(155deg, rgba(255, 255, 255, 0.055), rgba(181, 255, 92, 0.025));
+  border-color: rgba(54, 201, 106, 0.36);
+  background: linear-gradient(155deg, rgba(255, 255, 255, 0.055), rgba(54, 201, 106, 0.025));
 }
 
 .skill-card__top {
@@ -637,14 +637,14 @@
 }
 
 .project-card.is-active {
-  border-color: rgba(181, 255, 92, 0.3);
+  border-color: rgba(54, 201, 106, 0.3);
   box-shadow:
     0 44px 100px rgba(0, 0, 0, 0.55),
-    0 0 0 1px rgba(181, 255, 92, 0.08);
+    0 0 0 1px rgba(54, 201, 106, 0.08);
 }
 
 .project-card:hover {
-  border-color: rgba(181, 255, 92, 0.45);
+  border-color: rgba(54, 201, 106, 0.45);
 }
 
 .project-art {
@@ -893,7 +893,7 @@
 .carousel-button:hover {
   border-color: var(--pink);
   color: var(--pink);
-  background: rgba(181, 255, 92, 0.04);
+  background: rgba(54, 201, 106, 0.04);
 }
 
 .carousel-index {
@@ -1082,7 +1082,7 @@
   bottom: 0;
   width: 2px;
   z-index: 5;
-  background: linear-gradient(180deg, var(--pink), rgba(181, 255, 92, 0.08) 70%);
+  background: linear-gradient(180deg, var(--pink), rgba(54, 201, 106, 0.08) 70%);
 }
 
 .project-modal__header {
@@ -1281,7 +1281,7 @@
 .project-modal__link:hover {
   border-color: var(--pink-line);
   color: var(--pink);
-  background: rgba(181, 255, 92, 0.04);
+  background: rgba(54, 201, 106, 0.04);
 }
 
 .project-modal__source-note {
@@ -1364,7 +1364,7 @@
 
 .education {
   background:
-    radial-gradient(50% 50% at 8% 30%, rgba(181, 255, 92, 0.035), transparent 65%),
+    radial-gradient(50% 50% at 8% 30%, rgba(54, 201, 106, 0.035), transparent 65%),
     #0b0b0c;
 }
 
@@ -1391,7 +1391,7 @@
 }
 
 .timeline-rail--progress {
-  background: linear-gradient(180deg, var(--pink), rgba(181, 255, 92, 0.22));
+  background: linear-gradient(180deg, var(--pink), rgba(54, 201, 106, 0.22));
   z-index: 1;
 }
 
@@ -1530,7 +1530,7 @@
   border: 1px solid var(--line);
   border-radius: 16px;
   background:
-    radial-gradient(120% 100% at 100% 0%, rgba(181, 255, 92, 0.08), transparent 55%),
+    radial-gradient(120% 100% at 100% 0%, rgba(54, 201, 106, 0.08), transparent 55%),
     linear-gradient(150deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
   overflow: hidden;
 }
@@ -1734,7 +1734,7 @@
 
 .contact {
   background:
-    radial-gradient(60% 60% at 78% 20%, rgba(181, 255, 92, 0.055), transparent 65%),
+    radial-gradient(60% 60% at 78% 20%, rgba(54, 201, 106, 0.055), transparent 65%),
     radial-gradient(50% 50% at 10% 80%, rgba(53, 79, 121, 0.18), transparent 68%),
     var(--ink);
 }
@@ -2223,5 +2223,14 @@
   color: rgba(255, 255, 255, 0.28);
 }
 
-.about__grid { grid-template-columns: minmax(0, 1fr); }
-.about__left { max-width: 920px; margin-inline: auto; }
+.about__grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.about__left {
+  width: 100%;
+}
+
+.about__paragraphs {
+  max-width: 78ch;
+}
