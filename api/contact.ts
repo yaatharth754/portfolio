@@ -39,10 +39,12 @@ function pruneLocal(now: number) {
   if (localLimits.size < 1000 && localDuplicates.size < 1000) return;
   for (const [key, entry] of localLimits) if (entry.resetAt <= now) localLimits.delete(key);
   for (const [key, expires] of localDuplicates) if (expires <= now) localDuplicates.delete(key);
+  while (localLimits.size > 5000) localLimits.delete(localLimits.keys().next().value!);
+  while (localDuplicates.size > 5000) localDuplicates.delete(localDuplicates.keys().next().value!);
 }
 
-async function limit(ip: string, email: string, fingerprint: string): Promise<{ status: 'allow' | 'limited' | 'duplicate'; duplicateKey: string }> {
-  const identity = hash(ip + ':' + email);
+async function limit(ip: string, fingerprint: string): Promise<{ status: 'allow' | 'limited' | 'duplicate'; duplicateKey: string }> {
+  const identity = hash(ip);
   const windowKey = 'portfolio:contact:rate:' + identity;
   const duplicateKey = 'portfolio:contact:duplicate:' + fingerprint;
   const redisUrl = process.env.UPSTASH_REDIS_REST_URL;
@@ -136,7 +138,7 @@ export default async function handler(req: Request, res: ServerResponse) {
   const fingerprint = hash(email + '\n' + subject + '\n' + message);
   let duplicateKey = '';
   try {
-    const decision = await limit(ip, email, fingerprint);
+    const decision = await limit(ip, fingerprint);
     duplicateKey = decision.duplicateKey;
     if (decision.status === 'limited') {
       res.setHeader('Retry-After', String(WINDOW_MS / 1000));

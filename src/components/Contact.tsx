@@ -104,6 +104,7 @@ export default function Contact() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify(values),
+        signal: AbortSignal.timeout(12_000),
       });
       const payload: { ok?: boolean; error?: string } = await response.json().catch(() => ({}));
       if (!response.ok || payload.ok !== true) throw new Error(payload.error || 'Message could not be sent.');
@@ -213,7 +214,7 @@ export default function Contact() {
                   <span>{status === 'sending' ? 'SENDING…' : 'SEND MESSAGE'}</span>
                   <ArrowUpRight size={19} strokeWidth={1.7} aria-hidden="true" />
                 </button>
-                <p className="contact-form__note">Your message is delivered securely to my inbox.</p>
+                <p className="contact-form__note">Messages are sent directly to my inbox.</p>
               </div>
               <p className={'contact-form__status contact-form__status--' + status} role="status" aria-live="polite">{statusText}</p>
             </form>

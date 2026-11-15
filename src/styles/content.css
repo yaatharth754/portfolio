@@ -1744,7 +1744,7 @@
 .contact::before {
   content: '';
   position: absolute;
-  z-index: -1;
+  z-index: 0;
   top: 24%;
   left: 50%;
   width: min(92vw, 1000px);
@@ -1755,6 +1755,8 @@
 }
 
 .contact__container {
+  position: relative;
+  z-index: 1;
   max-width: 1280px;
 }
 
