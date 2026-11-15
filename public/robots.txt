@@ -1,0 +1,8 @@
+# Yaatharth Bawankar — portfolio
+# All crawlers are welcome. There are no private routes.
+
+User-agent: *
+Allow: /
+
+# Assets that do not need to be crawled
+Disallow: /media/

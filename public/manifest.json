@@ -1,0 +1,33 @@
+{
+  "name": "Yaatharth Bawankar — Portfolio",
+  "short_name": "Yaatharth",
+  "description": "Portfolio of Yaatharth Bawankar, a Computer Science Engineering student building AI, machine learning, and data-driven software.",
+  "lang": "en",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#08090A",
+  "theme_color": "#08090A",
+  "categories": ["portfolio", "technology", "education"],
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    }
+  ]
+}

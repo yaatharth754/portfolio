@@ -1,0 +1,16 @@
+/* TEAM */
+  Developer: Yaatharth Bawankar
+  Role: Computer Science Engineering student
+  Location: Ahmedabad, Gujarat, India
+  Email: yaatharth754@gmail.com
+  LinkedIn: https://www.linkedin.com/in/yaatharth754
+  GitHub: https://github.com/yaatharth754
+
+/* SITE */
+  Language: English
+  Framework: React 19 + Vite + TypeScript
+  Motion: Framer Motion
+  Type: Bodoni Moda, Manrope, DM Mono
+  Palette: Black #08090A, Glass White #FFFFFF, Lime Green #B5FF5C
+  Signature colour: Dark Blue #244C9A, used for the glass Y halo
+  Video: Original canvas-drawn night scene, generated for this portfolio

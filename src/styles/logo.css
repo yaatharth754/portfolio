@@ -1,0 +1,761 @@
+/* ============================================================
+   THE ANGELIC Y — logo system, frame and loading experience
+   ============================================================ */
+
+.angel-logo {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* Parallax layers are driven by --px / --py on the frame. The frame itself
+   never moves. */
+.logo-parallax {
+  transition: transform 240ms ease-out;
+  will-change: transform;
+}
+
+.logo-parallax--halo {
+  transform: translate3d(calc(var(--px, 0) * 3.5px), calc(var(--py, 0) * 2.5px), 0);
+}
+
+.logo-parallax--wings {
+  transform: translate3d(calc(var(--px, 0) * 2px), calc(var(--py, 0) * 1.4px), 0);
+}
+
+.logo-parallax--y {
+  transform: translate3d(calc(var(--px, 0) * 0.8px), calc(var(--py, 0) * 0.8px), 0);
+}
+
+.logo-parallax--rope {
+  transform: translate3d(calc(var(--px, 0) * 2.6px), calc(var(--py, 0) * 1.8px), 0);
+}
+
+.logo-wing {
+  animation: wing-breathe-left 9.5s ease-in-out infinite alternate;
+  transform-box: fill-box;
+  transform-origin: 88% 74%;
+}
+
+.logo-wing--right {
+  animation-name: wing-breathe-right;
+  animation-duration: 10.6s;
+  transform-origin: 12% 74%;
+}
+
+@keyframes wing-breathe-left {
+  0% {
+    transform: rotate(0deg) translateY(0);
+  }
+  55% {
+    transform: rotate(-0.9deg) translateY(-1.2px);
+  }
+  100% {
+    transform: rotate(0.4deg) translateY(0.6px);
+  }
+}
+
+@keyframes wing-breathe-right {
+  0% {
+    transform: rotate(0deg) translateY(0);
+  }
+  55% {
+    transform: rotate(0.95deg) translateY(-1.1px);
+  }
+  100% {
+    transform: rotate(-0.35deg) translateY(0.5px);
+  }
+}
+
+.logo-feather-glint {
+  animation: feather-glint 8.5s linear infinite;
+}
+
+@keyframes feather-glint {
+  0%,
+  54% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+  60% {
+    opacity: 0.85;
+  }
+  82% {
+    opacity: 0.35;
+  }
+  100% {
+    stroke-dashoffset: -100;
+    opacity: 0;
+  }
+}
+
+.logo-ray {
+  animation: ray-travel 7s linear infinite;
+  filter: drop-shadow(0 0 2px rgba(239, 255, 0, 0.45));
+}
+
+@keyframes ray-travel {
+  0% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  24% {
+    opacity: 0.58;
+  }
+  68% {
+    opacity: 0.18;
+  }
+  100% {
+    stroke-dashoffset: -25;
+    opacity: 0;
+  }
+}
+
+.halo-breathe {
+  animation: halo-breathe 5.6s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes halo-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.025);
+    opacity: 1;
+  }
+}
+
+.halo-glow {
+  animation: halo-glow 4.8s ease-in-out infinite;
+}
+
+.halo-ring {
+  animation: halo-ring 4.8s ease-in-out infinite;
+}
+
+@keyframes halo-glow {
+  0%,
+  100% {
+    opacity: 0.22;
+  }
+  50% {
+    opacity: 0.52;
+  }
+}
+
+@keyframes halo-ring {
+  0%,
+  100% {
+    opacity: 0.82;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.halo-core {
+  animation: halo-core 3.6s ease-in-out infinite;
+}
+
+@keyframes halo-core {
+  0%,
+  100% {
+    opacity: 0.18;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+.halo-orbit {
+  animation: halo-orbit 38s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+@keyframes halo-orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.logo-halo-wash {
+  animation: halo-wash 6s ease-in-out infinite;
+}
+
+@keyframes halo-wash {
+  0%,
+  100% {
+    opacity: 0.18;
+  }
+  50% {
+    opacity: 0.38;
+  }
+}
+
+.logo-y {
+  animation: y-light 7s ease-in-out infinite;
+}
+
+@keyframes y-light {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.035);
+  }
+}
+
+.logo-rope {
+  animation: rope-wrap 14s ease-in-out infinite alternate;
+  transform-box: fill-box;
+  transform-origin: 50% 56%;
+}
+
+@keyframes rope-wrap {
+  0% {
+    transform: rotate(-0.6deg) translateY(0);
+  }
+  100% {
+    transform: rotate(0.55deg) translateY(-1px);
+  }
+}
+
+.logo-leaf {
+  animation: leaf-sway 8s ease-in-out infinite alternate;
+  transform-box: fill-box;
+  transform-origin: 0% 60%;
+}
+
+@keyframes leaf-sway {
+  0% {
+    transform: rotate(-2.8deg);
+  }
+  100% {
+    transform: rotate(3.2deg);
+  }
+}
+
+.logo-vine-flow {
+  animation: vine-flow 6.5s linear infinite;
+}
+
+@keyframes vine-flow {
+  0% {
+    stroke-dashoffset: 100;
+    opacity: 0;
+  }
+  18% {
+    opacity: 0.7;
+  }
+  82% {
+    opacity: 0.15;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
+.logo-bud {
+  animation: bud-sway 7.5s ease-in-out infinite alternate;
+  transform-box: fill-box;
+  transform-origin: 0% 70%;
+}
+
+@keyframes bud-sway {
+  from {
+    transform: rotate(-3deg);
+  }
+  to {
+    transform: rotate(2deg);
+  }
+}
+
+.logo-dust-dot {
+  animation: dust-drift 11s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.logo-dust-dot--bright {
+  filter: drop-shadow(0 0 2.5px rgba(255, 255, 255, 0.85));
+}
+
+@keyframes dust-drift {
+  0% {
+    transform: translate(0, 0) scale(0.6);
+    opacity: 0;
+  }
+  14% {
+    opacity: 0.55;
+  }
+  58% {
+    opacity: 0.25;
+  }
+  100% {
+    transform: translate(var(--drift-x, -6px), var(--drift-y, 20px)) scale(1.05);
+    opacity: 0;
+  }
+}
+
+/* ---------- Compact mark (nav + footer) ---------- */
+
+.angel-logo--compact {
+  overflow: visible;
+}
+
+.compact-halo-ring {
+  animation: compact-halo 4.6s ease-in-out infinite;
+}
+
+.compact-halo-glow {
+  animation: compact-halo-glow 4.6s ease-in-out infinite;
+}
+
+@keyframes compact-halo {
+  0%,
+  100% {
+    opacity: 0.86;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes compact-halo-glow {
+  0%,
+  100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.22;
+  }
+}
+
+.compact-wing {
+  animation: compact-wing-left 9s ease-in-out infinite alternate;
+  transform-box: fill-box;
+  transform-origin: 80% 70%;
+}
+
+.compact-wing--right {
+  animation-name: compact-wing-right;
+  animation-duration: 10s;
+  transform-origin: 20% 70%;
+}
+
+@keyframes compact-wing-left {
+  to {
+    transform: rotate(-0.8deg);
+  }
+}
+
+@keyframes compact-wing-right {
+  to {
+    transform: rotate(0.8deg);
+  }
+}
+
+.compact-rope {
+  animation: rope-wrap 16s ease-in-out infinite alternate;
+  transform-box: fill-box;
+  transform-origin: 50% 55%;
+}
+
+.compact-leaf {
+  animation: leaf-sway 8s ease-in-out infinite alternate;
+  transform-box: fill-box;
+  transform-origin: 0 60%;
+}
+
+.compact-leaf--late {
+  animation-duration: 9.5s;
+  animation-delay: 1.4s;
+}
+
+.compact-dust-dot {
+  animation: compact-dust 7s ease-in-out infinite;
+}
+
+@keyframes compact-dust {
+  0%,
+  100% {
+    opacity: 0.12;
+  }
+  45% {
+    opacity: 0.6;
+  }
+}
+
+/* ---------- Logo presentation frame ---------- */
+
+.logo-frame {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.logo-frame__inner {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.1rem, 3.6%, 1.9rem);
+  background:
+    radial-gradient(100% 90% at 50% 10%, rgba(42, 68, 112, 0.34), transparent 70%),
+    linear-gradient(154deg, #172846 0%, #101012 54%, #0a0a0b 100%);
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 17px;
+  box-shadow:
+    0 34px 80px rgba(4, 9, 19, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  /* Deliberately no animation or transform on the frame. */
+}
+
+.logo-frame__inner::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 11px;
+  pointer-events: none;
+}
+
+.logo-frame__inner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(130deg, rgba(181, 255, 92, 0.05), transparent 38%, transparent 72%, rgba(255, 255, 255, 0.03));
+  pointer-events: none;
+}
+
+.logo-frame__tick {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.logo-frame__tick--tl {
+  top: 16px;
+  left: 16px;
+  border-top: 1px solid var(--pink);
+  border-left: 1px solid var(--pink);
+}
+
+.logo-frame__tick--tr {
+  top: 16px;
+  right: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  border-right: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.logo-frame__tick--bl {
+  bottom: 16px;
+  left: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  border-left: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.logo-frame__tick--br {
+  right: 16px;
+  bottom: 16px;
+  border-right: 1px solid var(--pink);
+  border-bottom: 1px solid var(--pink);
+}
+
+.logo-frame__label,
+.logo-frame__base {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: var(--mono);
+  font-size: clamp(0.38rem, 0.7vw, 0.52rem);
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.46);
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.logo-frame__label {
+  padding-inline: 0.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  padding-bottom: 0.6rem;
+}
+
+.logo-frame__base {
+  padding-inline: 0.2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  padding-top: 0.65rem;
+}
+
+.logo-frame__art {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  padding: clamp(0.4rem, 2.4%, 1.2rem) 0;
+}
+
+.logo-frame__art::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  height: 70%;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(255, 255, 255, 0.055);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.logo-frame__logo {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 94%);
+  height: auto;
+  max-height: 100%;
+  filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.25));
+}
+
+.logo-frame__halo {
+  position: absolute;
+  top: 2%;
+  left: 50%;
+  width: 56%;
+  height: 28%;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at center, rgba(239, 255, 0, 0.16), transparent 68%);
+  filter: blur(10px);
+  pointer-events: none;
+}
+
+.logo-frame__dot {
+  position: absolute;
+  top: 24%;
+  right: 17%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--pink);
+  opacity: 0.9;
+}
+
+.logo-frame__pink-line {
+  position: absolute;
+  left: 14%;
+  bottom: 14%;
+  width: 38px;
+  height: 1px;
+  background: var(--pink);
+  opacity: 0.5;
+}
+
+.logo-frame__caption {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  margin-top: 1.15rem;
+  max-width: 42ch;
+  font-size: 0.76rem;
+  line-height: 1.65;
+  color: var(--muted);
+}
+
+.logo-frame__caption-mark {
+  width: 5px;
+  height: 5px;
+  flex: 0 0 auto;
+  margin-top: 0.5rem;
+  background: var(--pink);
+  transform: rotate(45deg);
+}
+
+/* ---------- Loading screen ---------- */
+
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background:
+    radial-gradient(70% 60% at 50% 45%, rgba(37, 60, 100, 0.32), transparent 70%),
+    var(--ink-deeper);
+}
+
+.loading-screen::before,
+.loading-screen::after {
+  position: absolute;
+  top: 2rem;
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.22em;
+  color: var(--faint);
+  text-transform: uppercase;
+}
+
+.loading-screen::before {
+  content: 'YB / PORTFOLIO';
+  left: clamp(1.25rem, 4vw, 3.5rem);
+}
+
+.loading-screen::after {
+  content: 'MMXXVI';
+  right: clamp(1.25rem, 4vw, 3.5rem);
+}
+
+.loading-screen__chart {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.loading-screen__ring {
+  width: min(72vmin, 660px);
+  height: min(72vmin, 660px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 50%;
+  animation: loading-ring 24s linear infinite;
+}
+
+.loading-screen__ring::before {
+  content: '';
+  position: absolute;
+  inset: 11%;
+  border: 1px dashed rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+}
+
+@keyframes loading-ring {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-screen__line {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.loading-screen__line--h {
+  width: 100%;
+  height: 1px;
+}
+
+.loading-screen__line--v {
+  height: 100%;
+  width: 1px;
+}
+
+.loading-screen__mark {
+  position: relative;
+  z-index: 2;
+  width: clamp(168px, 26vmin, 244px);
+  filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.35));
+}
+
+.loading-screen__logo {
+  width: 100%;
+}
+
+.loading-screen__footer {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: clamp(1.5rem, 4vh, 2.6rem);
+  transform: translateX(-50%);
+  width: min(92%, 560px);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.loading-screen__identity {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.loading-screen__name {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  color: var(--white);
+}
+
+.loading-screen__role {
+  font-family: var(--mono);
+  font-size: 0.47rem;
+  letter-spacing: 0.16em;
+  color: var(--faint);
+}
+
+.loading-screen__meter {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  width: min(42%, 210px);
+}
+
+.loading-screen__meter-label {
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.08em;
+  color: var(--pink);
+}
+
+.loading-screen__track {
+  display: block;
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+}
+
+.loading-screen__fill {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--pink);
+  transform-origin: 0 50%;
+  transition: transform 120ms linear;
+}
+
+@media (max-width: 560px) {
+  .loading-screen__footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.1rem;
+  }
+
+  .loading-screen__meter {
+    width: 100%;
+  }
+
+  .logo-frame__label,
+  .logo-frame__base {
+    font-size: 0.42rem;
+    letter-spacing: 0.1em;
+  }
+}
