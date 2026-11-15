@@ -46,14 +46,14 @@ export default function LogoSquareFrame() {
           <AngelLogo
             variant="full"
             className="logo-frame__logo"
-            title="Yaatharth Bawankar glass Y logo with glowing dark blue halo"
+            title="Yaatharth Bawankar metallic silver Y logo with glowing dark blue halo"
           />
           <span className="logo-frame__dot" aria-hidden="true" />
           <span className="logo-frame__pink-line" aria-hidden="true" />
         </div>
 
         <div className="logo-frame__base" aria-hidden="true">
-          <span>HALO · GLASS · MOTION</span>
+          <span>HALO · SILVER · MOTION</span>
           <span>f/01</span>
         </div>
       </div>

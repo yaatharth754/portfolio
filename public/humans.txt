@@ -11,6 +11,6 @@
   Framework: React 19 + Vite + TypeScript
   Motion: Framer Motion
   Type: Bodoni Moda, Manrope, DM Mono
-  Palette: Black #08090A, Glass White #FFFFFF, Green #36C96A
-  Signature colour: Dark Blue #244C9A, used for the glass Y halo
+  Palette: Black #08090A, Glass White #FFFFFF, Green #05ff3b
+  Signature colour: Dark Blue #244C9A, used for the metallic Y halo
   Video: Original canvas-drawn night scene, generated for this portfolio

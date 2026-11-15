@@ -10,9 +10,9 @@
   --ink-raised: #141517;
   --ink-raised-2: #1b1d1f;
   --white: #ffffff;
-  --pink: #36c96a;
-  --pink-soft: rgba(54, 201, 106, 0.1);
-  --pink-line: rgba(54, 201, 106, 0.42);
+  --pink: #05ff3b;
+  --pink-soft: #05ff3b1a;
+  --pink-line: #05ff3b6b;
   --halo: #244c9a;
   --mist: #c7ccc5;
   --muted: #a0a79d;
@@ -152,7 +152,7 @@ main:focus {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(54, 201, 106, 0.35);
+  background: #05ff3b59;
   border-radius: 999px;
 }
 
@@ -162,7 +162,7 @@ main:focus {
 
 html {
   scrollbar-width: thin;
-  scrollbar-color: rgba(54, 201, 106, 0.35) var(--ink-deeper);
+  scrollbar-color: #05ff3b59 var(--ink-deeper);
 }
 
 /* ---------- Accessibility ---------- */
@@ -282,7 +282,7 @@ em {
 
 .status-dot--pink {
   background: var(--pink);
-  box-shadow: 0 0 0 3px rgba(54, 201, 106, 0.1);
+  box-shadow: 0 0 0 3px #05ff3b1a;
 }
 
 @keyframes status-breathe {
@@ -348,7 +348,7 @@ em {
 .btn--outline:hover {
   border-color: var(--pink-line);
   color: var(--pink);
-  background: rgba(54, 201, 106, 0.04);
+  background: #05ff3b0a;
   transform: translateY(-2px);
 }
 

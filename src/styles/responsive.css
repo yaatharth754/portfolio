@@ -16,7 +16,7 @@
   }
 
   .hero__grid {
-    grid-template-columns: minmax(0, 1fr) minmax(220px, 250px);
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 310px);
   }
 
   .hero-orbit {
@@ -69,11 +69,6 @@
   .project-card-slot {
     width: min(500px, 50vw);
     height: clamp(520px, 60vh, 580px);
-  }
-
-  .about__grid {
-    grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.85fr);
-    gap: clamp(2.2rem, 4vw, 3.5rem);
   }
 
   .experience__grid,
@@ -1170,6 +1165,10 @@
   .hero__emblem {
     width: min(56vw, 290px);
   }
+
+  .about__paragraphs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 600px) {
@@ -1177,4 +1176,5 @@
   .hero__emblem { width: min(68vw, 260px); margin-inline: auto; }
   .hero__word { font-size: clamp(2.55rem, 10.2vw, 4.8rem); }
   .hero__line-inner { overflow: visible; }
+  .about__paragraphs { grid-template-columns: minmax(0, 1fr); }
 }

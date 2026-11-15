@@ -46,7 +46,7 @@ CONTACT_FROM_EMAIL="Portfolio <hello@your-verified-domain.com>"
 
 - The only video is an original, canvas-rendered night scene at `public/media/yaatharth-scene.mp4`. It appears exclusively inside the letterforms of "YAATHARTH" in the About section.
 - Project artwork is original inline SVG; there are no stock images, photographs, or project screenshots.
-- The glass Y logo is a shared inline SVG with a dark blue halo.
+- The metallic silver Y logo is a shared inline SVG with a dark blue halo.
 
 ## Structure
 
@@ -65,7 +65,7 @@ public/
 
 - Skip link, semantic landmarks, visible focus rings, keyboard carousel controls, focus-trapped menu and modal, and live status messages.
 - `prefers-reduced-motion` disables automatic rotation, video playback, and non-essential animation.
-- The interface uses black, glass white, and green. The logo halo is dark blue.
+- The interface uses black, silver, and #05ff3b green. The logo halo is dark blue.
 
 ## License
 

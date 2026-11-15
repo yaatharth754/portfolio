@@ -122,7 +122,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="hero__emblem"><AngelLogo variant="full" title="Rotating transparent glass Y with a glowing dark blue halo" /></div>
+            <div className="hero__emblem"><AngelLogo variant="full" title="Rotating metallic silver Y with a glowing dark blue halo" /></div>
           </motion.aside>
         </div>
 

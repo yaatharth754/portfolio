@@ -157,7 +157,7 @@
 .resume-pill:hover {
   border-color: var(--pink-line);
   color: var(--pink);
-  background: rgba(54, 201, 106, 0.04);
+  background: #05ff3b0a;
 }
 
 .resume-pill:hover svg {
@@ -297,7 +297,7 @@
   align-items: center;
   padding: calc(var(--nav-height) + 2.6rem) 0 2.1rem;
   overflow: hidden;
-  background: radial-gradient(ellipse at 80% 28%, rgba(89, 118, 66, .13), transparent 46%), linear-gradient(145deg, #050506, #101112 70%, #050506);
+  background: radial-gradient(ellipse at 80% 28%, #05ff3b21, transparent 46%), linear-gradient(145deg, #050506, #101112 70%, #050506);
 }
 
 .hero__ambient {
@@ -440,7 +440,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(300px, 390px);
   gap: clamp(2rem, 5vw, 5rem);
-  align-items: end;
+  align-items: center;
   margin-top: clamp(2.1rem, 4.8vh, 4.1rem);
 }
 
@@ -549,7 +549,7 @@
 }
 
 .hero-orbit__arc--pink {
-  stroke: rgba(54, 201, 106, 0.65);
+  stroke: #05ff3ba6;
   animation-duration: 27s;
   animation-direction: reverse;
 }
@@ -792,5 +792,6 @@
 
 .hero__aside {
   align-self: stretch;
+  align-items: center;
   justify-content: center;
 }
