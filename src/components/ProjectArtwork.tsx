@@ -25,6 +25,7 @@ export default function ProjectArtwork({ art, id }: ProjectArtworkProps) {
           {art === 'face' ? '98% ACC.' : art === 'pose' ? 'REAL-TIME' : 'RAG / 01'}
         </text>
       </svg>
+      {art === 'face' ? <span className="project-art__scan" /> : null}
     </div>
   );
 }
@@ -77,7 +78,7 @@ function FaceArt() {
         )}
       </g>
       <rect x="188" y="26" width="184" height="248" rx="4" fill="none" stroke="rgba(244,166,193,0.32)" strokeWidth="0.8" strokeDasharray="14 5 2 5" />
-      <line x1="52" y1="76" x2="508" y2="76" className="project-art__scan" stroke="#05ff3b" strokeWidth="1" opacity="0.5" />
+      <line x1="52" y1="76" x2="508" y2="76" stroke="#05ff3b" strokeWidth="1" opacity="0.18" />
       <circle cx="188" cy="26" r="3" fill="#05ff3b" />
       <circle cx="372" cy="274" r="3" fill="#05ff3b" />
       <text x="188" y="20" className="project-art__label">01 / FACE MATCH</text>

@@ -46,13 +46,24 @@ export default function CustomCursor() {
       aura.style.translate = `${auraX - 60}px ${auraY - 60}px`;
     };
 
+    /** Below this distance the trailing layers are visually at rest. */
+    const SETTLED = 0.3;
+
     const tick = () => {
       ringX += (pointerX - ringX) * 0.18;
       ringY += (pointerY - ringY) * 0.18;
       auraX += (pointerX - auraX) * 0.1;
       auraY += (pointerY - auraY) * 0.1;
       place();
-      frame = window.requestAnimationFrame(tick);
+
+      // Park the loop once pointer and trail have converged, so an idle mouse
+      // costs no animation frames at all.
+      const idle =
+        Math.abs(pointerX - ringX) < SETTLED &&
+        Math.abs(pointerY - ringY) < SETTLED &&
+        Math.abs(pointerX - auraX) < SETTLED &&
+        Math.abs(pointerY - auraY) < SETTLED;
+      frame = idle ? 0 : window.requestAnimationFrame(tick);
     };
 
     /** Small, haze-free pointer over the motion frame; neon elsewhere. */
@@ -80,13 +91,7 @@ export default function CustomCursor() {
     const onPointerMove = (event: PointerEvent) => {
       pointerX = event.clientX;
       pointerY = event.clientY;
-      if (!frame) {
-        ringX = pointerX;
-        ringY = pointerY;
-        auraX = pointerX;
-        auraY = pointerY;
-        place();
-      }
+      if (!frame) frame = window.requestAnimationFrame(tick);
     };
 
     const onPointerOver = (event: PointerEvent) => {

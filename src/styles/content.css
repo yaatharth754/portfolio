@@ -194,11 +194,8 @@
     rgba(34, 230, 255, 0) 100%
   );
   box-shadow:
-    0 0 5px rgba(244, 255, 255, 0.95),
-    0 0 12px rgba(34, 230, 255, 0.9),
-    0 0 26px rgba(34, 230, 255, 0.55),
-    0 0 40px rgba(34, 230, 255, 0.3);
-  will-change: translate, opacity, scale;
+    0 0 6px rgba(244, 255, 255, 0.85),
+    0 0 18px rgba(34, 230, 255, 0.75);
 }
 
 .video-type__topline {
@@ -254,7 +251,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: saturate(0.93) contrast(1.03);
 }
 
 .video-type__fallback {
@@ -276,8 +272,7 @@
 .video-type__grain {
   position: absolute;
   inset: 0;
-  opacity: 0.22;
-  mix-blend-mode: soft-light;
+  opacity: 0.12;
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.42'/%3E%3C/svg%3E");
 }
@@ -340,8 +335,7 @@
   stroke-dashoffset: 1256;
   filter:
     drop-shadow(0 0 3px rgba(34, 230, 255, 1))
-    drop-shadow(0 0 9px rgba(34, 230, 255, 0.75))
-    drop-shadow(0 0 20px rgba(34, 230, 255, 0.4));
+    drop-shadow(0 0 14px rgba(34, 230, 255, 0.6));
 }
 
 /* Clicked once: the black plates clear, so the animated scene plays across the
@@ -675,7 +669,6 @@
   height: 60px;
   border-radius: 50%;
   background: radial-gradient(ellipse, rgba(0, 0, 0, 0.5), transparent 68%);
-  filter: blur(15px);
 }
 
 .project-carousel__orbit {
@@ -771,21 +764,38 @@
   letter-spacing: 0.14em;
 }
 
+/* A composited scan line: the moving line is an HTML layer, so it slides on
+   the GPU instead of repainting the artwork every frame. */
 .project-art__scan {
+  position: absolute;
+  z-index: 2;
+  left: 9%;
+  right: 9%;
+  top: 25%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #05ff3b, transparent);
+  opacity: 0;
+  will-change: transform, opacity;
   animation: art-scan 5.4s var(--ease-soft) infinite;
+  /* Only the card in front runs it — the others stay still. */
+  animation-play-state: paused;
+}
+
+.project-card.is-active .project-art__scan {
+  animation-play-state: running;
 }
 
 @keyframes art-scan {
   0%,
   100% {
-    transform: translateY(-34px);
+    transform: translateY(-26px);
     opacity: 0;
   }
   18% {
     opacity: 0.55;
   }
   62% {
-    transform: translateY(150px);
+    transform: translateY(114px);
     opacity: 0.1;
   }
 }
@@ -1090,9 +1100,9 @@
   align-items: center;
   justify-content: center;
   padding: clamp(0.8rem, 3vh, 2rem) clamp(0.8rem, 3vw, 2rem);
-  background: rgba(4, 9, 18, 0.82);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(4, 9, 18, 0.9);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .project-modal__panel {
@@ -1886,16 +1896,37 @@
 }
 
 .contact__available-dot {
+  position: relative;
   width: 7px;
   height: 7px;
   border-radius: 50%;
   background: #05ff3b;
-  box-shadow: 0 0 0 4px #05ff3b16;
+  box-shadow: 0 0 0 4px #05ff3b16, 0 0 10px #05ff3b44;
+}
+
+/* The pulse is a composited ring: transform + opacity only, no repaint. */
+.contact__available-dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid #05ff3b;
   animation: contact-pulse 2.8s ease-in-out infinite;
 }
 
 @keyframes contact-pulse {
-  50% { box-shadow: 0 0 0 8px #05ff3b00, 0 0 12px #05ff3b88; }
+  0% {
+    transform: scale(0.72);
+    opacity: 0;
+  }
+  35% {
+    opacity: 0.6;
+  }
+  70%,
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
 }
 
 .contact__cards {
@@ -1922,10 +1953,8 @@
   border-radius: 22px;
   background:
     linear-gradient(145deg, #ffffff14 0%, #ffffff06 34%, #00000000 62%),
-    linear-gradient(155deg, #181818d9, #111111e8);
+    linear-gradient(155deg, #181818f2, #111111f7);
   box-shadow: inset 0 1px 0 #ffffff2e, inset 1px 0 0 #ffffff0a, 0 18px 44px #0000006b;
-  backdrop-filter: blur(18px) saturate(1.12);
-  -webkit-backdrop-filter: blur(18px) saturate(1.12);
   transform: translateY(0) perspective(800px) rotateX(0deg);
   transition: transform 340ms var(--ease-out), border-color 300ms ease, box-shadow 340ms ease, background 340ms ease;
   -webkit-tap-highlight-color: transparent;
@@ -2080,10 +2109,8 @@
   scroll-margin-top: calc(var(--nav-height) + 24px);
   border: 1px solid #ffffff2b;
   border-radius: 24px;
-  background: linear-gradient(135deg, #181818ed 0%, #111111e8 58%, #181818ed 100%);
+  background: linear-gradient(135deg, #181818f7 0%, #111111f5 58%, #181818f7 100%);
   box-shadow: inset 0 1px 0 #ffffff36, 0 32px 90px #000000a6;
-  backdrop-filter: blur(22px) saturate(1.1);
-  -webkit-backdrop-filter: blur(22px) saturate(1.1);
 }
 
 .contact-form-panel::before {
@@ -2590,8 +2617,7 @@ html.cursor-fx-on *:not(input):not(textarea):not(select) {
     radial-gradient(circle at 36% 34%, rgba(255, 45, 155, 0.85), transparent 58%),
     radial-gradient(circle at 66% 64%, rgba(34, 230, 255, 0.75), transparent 58%),
     radial-gradient(circle, rgba(47, 123, 255, 0.6), transparent 72%);
-  filter: blur(12px) saturate(1.35);
-  mix-blend-mode: screen;
+  filter: blur(14px) saturate(1.35);
 }
 
 .cursor-fx__dot {
@@ -2617,8 +2643,7 @@ html.cursor-fx-on *:not(input):not(textarea):not(select) {
   animation: cursor-fx-spin 3.4s linear infinite;
   filter:
     drop-shadow(0 0 4px rgba(255, 45, 155, 0.95))
-    drop-shadow(0 0 12px rgba(47, 123, 255, 0.6))
-    drop-shadow(0 0 24px rgba(34, 230, 255, 0.45));
+    drop-shadow(0 0 13px rgba(34, 230, 255, 0.5));
 }
 
 @keyframes cursor-fx-spin {
@@ -2657,12 +2682,11 @@ html.cursor-fx-on *:not(input):not(textarea):not(select) {
   background:
     radial-gradient(120% 140% at 12% 0%, rgba(5, 255, 59, 0.12), transparent 55%),
     radial-gradient(120% 160% at 88% 100%, rgba(255, 26, 46, 0.14), transparent 62%),
-    rgba(10, 11, 12, 0.93);
+    rgba(10, 11, 12, 0.98);
   box-shadow:
     0 26px 60px rgba(0, 0, 0, 0.55),
     0 0 0 1px rgba(255, 255, 255, 0.03),
     0 0 34px rgba(5, 255, 59, 0.12);
-  backdrop-filter: blur(14px);
   opacity: 0;
   pointer-events: none;
   will-change: transform, opacity;
