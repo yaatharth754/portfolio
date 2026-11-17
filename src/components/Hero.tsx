@@ -1,4 +1,3 @@
-import { motion, useReducedMotion } from 'framer-motion';
 import { animate } from 'animejs';
 import { useEffect, useRef } from 'react';
 import { Sparkle } from 'lucide-react';
@@ -15,7 +14,6 @@ const headlineLines = [
 ];
 
 export default function Hero() {
-  const reduce = useReducedMotion();
   const heroRef = useRef<HTMLElement>(null);
 
   /* Keep the emblem the same height as the headline block ("Building" top →
@@ -57,30 +55,6 @@ export default function Hero() {
     };
   }, []);
 
-  const container = {
-    hidden: {},
-    visible: {
-      transition: { staggerChildren: reduce ? 0 : 0.075, delayChildren: 0.04 },
-    },
-  };
-
-  const line = {
-    hidden: { y: reduce ? '0%' : '112%' },
-    visible: {
-      y: '0%',
-      transition: { duration: 1.05, ease: [0.22, 1, 0.36, 1] as const },
-    },
-  };
-
-  const fade = {
-    hidden: { opacity: 0, y: reduce ? 0 : 18 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.9, ease: [0.22, 1, 0.36, 1] as const },
-    },
-  };
-
   return (
     <section className="hero" id="home" aria-labelledby="hero-heading" ref={heroRef} data-depth-root>
       <div className="hero__ambient" aria-hidden="true">
@@ -93,12 +67,7 @@ export default function Hero() {
       </div>
 
       <div className="container hero__container">
-        <motion.div
-          className="hero__topline"
-          initial={reduce ? false : { opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1 }}
-        >
+        <div className="hero__topline">
           <div className="hero__identity">
             <span className="status-dot" aria-hidden="true" />
             <span>Yaatharth Bawankar</span>
@@ -109,63 +78,36 @@ export default function Hero() {
             <span className="status-dot status-dot--pink" aria-hidden="true" />
             {profile.availability}
           </p>
-        </motion.div>
+        </div>
 
         <div className="hero__grid">
           <div className="hero__headline-wrap">
-            <motion.h1
-              className="hero__headline"
-              id="hero-heading"
-              variants={container}
-              initial={reduce ? false : 'hidden'}
-              animate="visible"
-            >
+            <h1 className="hero__headline" id="hero-heading">
               {headlineLines.map((item, index) => (
                 <span className="hero__line" key={item.text}>
                   <span className="hero__line-inner">
-                    <motion.span
-                      variants={line}
-                      className={item.emphasis ? 'hero__word hero__word--emphasis' : 'hero__word'}
-                    >
+                    <span className={item.emphasis ? 'hero__word hero__word--emphasis' : 'hero__word'}>
                       {item.text}
-                    </motion.span>
+                    </span>
                     {index === 1 ? (
-                      <motion.span
-                        className="hero__star-glyph"
-                        aria-hidden="true"
-                        initial={reduce ? false : { opacity: 0, scale: 0.4, rotate: -45 }}
-                        animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                        transition={{ duration: 0.8, delay: 0.75, ease: [0.22, 1, 0.36, 1] }}
-                      >
+                      <span className="hero__star-glyph" aria-hidden="true">
                         <Sparkle size={30} strokeWidth={1} />
-                      </motion.span>
+                      </span>
                     ) : null}
                   </span>
                 </span>
               ))}
-            </motion.h1>
+            </h1>
 
-            <motion.div
-              className="hero__subrow"
-              initial={reduce ? false : 'hidden'}
-              animate="visible"
-              variants={container}
-            >
-              <motion.p className="hero__support" variants={fade}>
-                {profile.support}
-              </motion.p>
-              <motion.span className="hero__support-mark" variants={fade} aria-hidden="true">
+            <div className="hero__subrow">
+              <p className="hero__support">{profile.support}</p>
+              <span className="hero__support-mark" aria-hidden="true">
                 ✳
-              </motion.span>
-            </motion.div>
+              </span>
+            </div>
           </div>
 
-          <motion.aside
-            className="hero__aside"
-            initial={reduce ? false : { opacity: 0, y: 26 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          >
+          <aside className="hero__aside">
             <div
               className="hero__emblem"
               role="button"
@@ -194,15 +136,10 @@ export default function Hero() {
             >
               <AngelLogo variant="full" title="Static metallic silver Y with a glowing red halo" />
             </div>
-          </motion.aside>
+          </aside>
         </div>
 
-        <motion.div
-          className="hero__footer"
-          initial={reduce ? false : { opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 1.1 }}
-        >
+        <div className="hero__footer">
           <a className="scroll-cue" href="#about" aria-label="Scroll to explore the about section">
             <span className="scroll-cue__track" aria-hidden="true">
               <span className="scroll-cue__dot" />
@@ -215,7 +152,7 @@ export default function Hero() {
             <span>72.5714° E</span>
           </div>
           <span className="hero__folio" aria-hidden="true">PORTFOLIO / 2026</span>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

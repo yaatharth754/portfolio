@@ -195,7 +195,7 @@ export default function VideoTypography() {
       </div>
 
       <div className="video-type__stage">
-        <div className="video-type__frame" data-depth="0.08">
+        <div className="video-type__frame">
           <div className="video-type__media" aria-hidden="true">
             {!reduce ? (
               <video
