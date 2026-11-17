@@ -795,3 +795,18 @@
   align-items: center;
   justify-content: center;
 }
+
+/* Desktop: the emblem is sized to the headline block and aligned with the
+   "Building" top line and the "Through Code." bottom line. */
+@media (min-width: 981px) {
+  .hero__aside {
+    align-self: start;
+    margin-top: var(--emblem-offset, 0px);
+  }
+
+  .hero__emblem {
+    width: min(var(--emblem-size, 390px), 440px);
+    height: min(var(--emblem-size, 390px), 440px);
+    aspect-ratio: auto;
+  }
+}

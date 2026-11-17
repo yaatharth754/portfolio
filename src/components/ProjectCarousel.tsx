@@ -2,8 +2,6 @@ import { useEffect, useRef, useState } from 'react';
 import type { CSSProperties, PointerEvent as ReactPointerEvent } from 'react';
 import { motion, useInView, useReducedMotion } from 'framer-motion';
 import {
-  ArrowLeft,
-  ArrowRight,
   ArrowUpRight,
 } from 'lucide-react';
 import ProjectArtwork from './ProjectArtwork';
@@ -106,8 +104,8 @@ export default function ProjectCarousel({ onSelectProject }: ProjectCarouselProp
           dragStart.current = null;
         }}
       >
-        <div className="project-carousel__floor" aria-hidden="true" />
-        <div className="project-carousel__orbit" aria-hidden="true" />
+        <div className="project-carousel__floor" aria-hidden="true" data-depth="0.12" />
+        <div className="project-carousel__orbit" aria-hidden="true" data-depth="0.24" />
 
         {projects.map((project, index) => {
           const offset = (index - activeIndex + projects.length) % projects.length;
@@ -184,25 +182,6 @@ export default function ProjectCarousel({ onSelectProject }: ProjectCarouselProp
       </div>
 
       <div className="project-carousel__controls">
-        <div className="project-carousel__nav">
-          <button
-            type="button"
-            className="carousel-button"
-            aria-label="Previous project"
-            onClick={() => go(-1)}
-          >
-            <ArrowLeft size={18} strokeWidth={1.4} aria-hidden="true" />
-          </button>
-          <button
-            type="button"
-            className="carousel-button"
-            aria-label="Next project"
-            onClick={() => go(1)}
-          >
-            <ArrowRight size={18} strokeWidth={1.4} aria-hidden="true" />
-          </button>
-        </div>
-
         <div className="carousel-index" aria-hidden="true">
           <span>{projects[activeIndex].index}</span>
           <span className="carousel-index__rule" />

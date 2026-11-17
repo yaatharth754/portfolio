@@ -3,6 +3,7 @@ import { motion, useReducedMotion, useScroll, useSpring } from 'framer-motion';
 import { CircleDot, MapPin } from 'lucide-react';
 import SectionHeading from './SectionHeading';
 import Reveal from './Reveal';
+import { useTimelineLight } from '../hooks/useTimelineLight';
 import { certifications, languages, practicalExperience, profile } from '../data/profile';
 
 export default function Experience() {
@@ -17,6 +18,8 @@ export default function Experience() {
     damping: 28,
     restDelta: 0.001,
   });
+
+  useTimelineLight(timelineRef, scaleY, Boolean(reduce));
 
   return (
     <section className="section experience" id="experience" aria-labelledby="experience-heading">

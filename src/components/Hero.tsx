@@ -1,7 +1,11 @@
 import { motion, useReducedMotion } from 'framer-motion';
+import { animate } from 'animejs';
+import { useEffect, useRef } from 'react';
 import { Sparkle } from 'lucide-react';
 import AngelLogo from './AngelLogo';
 import { profile } from '../data/profile';
+import { popElement } from '../lib/motion';
+import { showQuote } from '../lib/quote';
 
 const headlineLines = [
   { text: 'Building', emphasis: false },
@@ -12,6 +16,46 @@ const headlineLines = [
 
 export default function Hero() {
   const reduce = useReducedMotion();
+  const heroRef = useRef<HTMLElement>(null);
+
+  /* Keep the emblem the same height as the headline block ("Building" top →
+     "Through Code." bottom) on the two-column desktop layout. */
+  useEffect(() => {
+    const root = heroRef.current;
+    if (!root) return;
+    const headline = root.querySelector<HTMLElement>('.hero__headline');
+    const grid = root.querySelector<HTMLElement>('.hero__grid');
+    if (!headline || !grid) return;
+
+    const desktop = window.matchMedia('(min-width: 981px)');
+    const apply = () => {
+      if (!desktop.matches) {
+        root.style.removeProperty('--emblem-size');
+        root.style.removeProperty('--emblem-offset');
+        return;
+      }
+      const box = headline.getBoundingClientRect();
+      const row = grid.getBoundingClientRect();
+      root.style.setProperty('--emblem-size', `${Math.round(box.height)}px`);
+      root.style.setProperty('--emblem-offset', `${Math.round(box.top - row.top)}px`);
+    };
+
+    apply();
+    const frame = window.requestAnimationFrame(apply);
+    const settle = window.setTimeout(apply, 350);
+    const observer = new ResizeObserver(apply);
+    observer.observe(headline);
+    observer.observe(grid);
+    window.addEventListener('resize', apply);
+    desktop.addEventListener('change', apply);
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.clearTimeout(settle);
+      observer.disconnect();
+      window.removeEventListener('resize', apply);
+      desktop.removeEventListener('change', apply);
+    };
+  }, []);
 
   const container = {
     hidden: {},
@@ -38,14 +82,14 @@ export default function Hero() {
   };
 
   return (
-    <section className="hero" id="home" aria-labelledby="hero-heading">
+    <section className="hero" id="home" aria-labelledby="hero-heading" ref={heroRef} data-depth-root>
       <div className="hero__ambient" aria-hidden="true">
-        <span className="hero__meridian hero__meridian--one" />
-        <span className="hero__meridian hero__meridian--two" />
-        <span className="hero__glow" />
-        <span className="hero__star hero__star--one" />
-        <span className="hero__star hero__star--two" />
-        <span className="hero__star hero__star--three" />
+        <span className="hero__meridian hero__meridian--one" data-depth="0.35" />
+        <span className="hero__meridian hero__meridian--two" data-depth="0.55" />
+        <span className="hero__glow" data-depth="0.18" />
+        <span className="hero__star hero__star--one" data-depth="1.1" />
+        <span className="hero__star hero__star--two" data-depth="0.8" />
+        <span className="hero__star hero__star--three" data-depth="1.4" />
       </div>
 
       <div className="container hero__container">
@@ -122,7 +166,34 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.55, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="hero__emblem"><AngelLogo variant="full" title="Rotating metallic silver Y with a glowing dark blue halo" /></div>
+            <div
+              className="hero__emblem"
+              role="button"
+              tabIndex={0}
+              aria-label="Show the field note"
+              onClick={(event) => {
+                popElement(event.currentTarget);
+                const halo = event.currentTarget.querySelector('.glass-logo__halo');
+                if (halo) {
+                  animate(halo, {
+                    scale: [1, 1.09, 1],
+                    opacity: [1, 0.55, 1],
+                    duration: 720,
+                    ease: 'outQuad',
+                  });
+                }
+                showQuote(event.clientX, event.clientY);
+              }}
+              onKeyDown={(event) => {
+                if (event.key !== 'Enter' && event.key !== ' ') return;
+                event.preventDefault();
+                const rect = event.currentTarget.getBoundingClientRect();
+                popElement(event.currentTarget);
+                showQuote(rect.left + rect.width / 2, rect.top + rect.height / 2);
+              }}
+            >
+              <AngelLogo variant="full" title="Static metallic silver Y with a glowing red halo" />
+            </div>
           </motion.aside>
         </div>
 

@@ -6,6 +6,10 @@ import { navItems, profile } from '../data/profile';
 import { useActiveSection } from '../hooks/useActiveSection';
 import { useFocusTrap } from '../hooks/useFocusTrap';
 import { useLockBodyScroll } from '../hooks/useLockBodyScroll';
+import { popElement } from '../lib/motion';
+import { showQuote } from '../lib/quote';
+
+/* Clicking the brand mark opens the field-note quote card. */
 
 const NAV_IDS = navItems.map((item) => item.id);
 
@@ -47,7 +51,14 @@ export default function Navbar() {
     <>
       <header className={`site-header${scrolled ? ' is-scrolled' : ''}`}>
         <div className="site-header__inner container">
-          <a className="brand" href="#home">
+          <a
+            className="brand"
+            href="#home"
+            onClick={(event) => {
+              popElement(event.currentTarget.querySelector('.brand__mark'));
+              showQuote(event.clientX, event.clientY);
+            }}
+          >
             <AngelLogo variant="compact" className="brand__mark" decorative />
             <span className="brand__type">
               <span className="brand__name">{'YAATHARTH '}</span>

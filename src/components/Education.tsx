@@ -3,6 +3,7 @@ import { motion, useReducedMotion, useScroll, useSpring } from 'framer-motion';
 import { GraduationCap } from 'lucide-react';
 import SectionHeading from './SectionHeading';
 import Reveal from './Reveal';
+import { useTimelineLight } from '../hooks/useTimelineLight';
 import { education } from '../data/profile';
 
 export default function Education() {
@@ -17,6 +18,8 @@ export default function Education() {
     damping: 28,
     restDelta: 0.001,
   });
+
+  useTimelineLight(timelineRef, scaleY, Boolean(reduce));
 
   return (
     <section className="section education" id="education" aria-labelledby="education-heading">

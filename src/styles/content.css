@@ -168,6 +168,39 @@
   margin: 0;
 }
 
+/* The stage lets the dust layer overflow past the frame's clipped edge. */
+.video-type__stage {
+  position: relative;
+  margin-top: 0.75rem;
+}
+
+.video-type__dust {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.video-type__mote {
+  position: absolute;
+  border-radius: 999px;
+  opacity: 0;
+  background: radial-gradient(
+    ellipse at 50% 34%,
+    #f4ffff 0 16%,
+    #67f2ff 42%,
+    #22e6ff 72%,
+    rgba(34, 230, 255, 0) 100%
+  );
+  box-shadow:
+    0 0 5px rgba(244, 255, 255, 0.95),
+    0 0 12px rgba(34, 230, 255, 0.9),
+    0 0 26px rgba(34, 230, 255, 0.55),
+    0 0 40px rgba(34, 230, 255, 0.3);
+  will-change: translate, opacity, scale;
+}
+
 .video-type__topline {
   display: flex;
   justify-content: space-between;
@@ -195,11 +228,14 @@
 
 .video-type__frame {
   position: relative;
-  margin-top: 0.75rem;
+  margin-top: 0;
   aspect-ratio: 1000 / 260;
-  background: #101012;
+  background-color: #101012;
   border: 1px solid var(--line);
   overflow: hidden;
+  transition:
+    background-color 420ms var(--ease-soft),
+    border-color 420ms var(--ease-soft);
 }
 
 .video-type__media {
@@ -209,6 +245,7 @@
     radial-gradient(120% 120% at 22% 20%, #2a4a77 0%, transparent 52%),
     radial-gradient(90% 100% at 78% 90%, #05ff3b3d, transparent 58%),
     linear-gradient(128deg, #0a0a0b 0%, #1c355a 48%, #0a0a0b 100%);
+  transition: opacity 420ms var(--ease-soft);
 }
 
 .video-type__video {
@@ -270,6 +307,58 @@
   stroke: rgba(255, 255, 255, 0.44);
   stroke-width: 1.15;
   paint-order: stroke;
+  transition:
+    stroke 420ms var(--ease-soft),
+    filter 420ms var(--ease-soft);
+}
+
+/* The "black screen": the masked plates that fill the frame around the name. */
+.video-type__screen,
+.video-type__screen-scrim {
+  transition: opacity 420ms var(--ease-soft);
+}
+
+/* Two neon traces run the perimeter from the top centre in opposite directions
+   and meet at the bottom centre, where the dust is released. */
+.video-type__trace {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.video-type__trace-path {
+  fill: none;
+  stroke: #22e6ff;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1256;
+  stroke-dashoffset: 1256;
+  filter:
+    drop-shadow(0 0 3px rgba(34, 230, 255, 1))
+    drop-shadow(0 0 9px rgba(34, 230, 255, 0.75))
+    drop-shadow(0 0 20px rgba(34, 230, 255, 0.4));
+}
+
+/* Clicked once: the black plates clear, so the animated scene plays across the
+   whole frame with the name still drawn over it. Clicking again hides it. */
+.video-type[data-bare='true'] .video-type__frame {
+  background-color: transparent;
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.video-type[data-bare='true'] .video-type__screen,
+.video-type[data-bare='true'] .video-type__screen-scrim {
+  opacity: 0;
+}
+
+.video-type[data-bare='true'] .video-type__outline {
+  stroke: rgba(255, 255, 255, 0.85);
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.35));
 }
 
 .video-type__corner {
@@ -581,7 +670,7 @@
   position: absolute;
   left: 50%;
   bottom: 3%;
-  transform: translateX(-50%);
+  translate: -50% 0;
   width: min(72%, 860px);
   height: 60px;
   border-radius: 50%;
@@ -595,7 +684,7 @@
   top: 51%;
   width: min(80vw, 980px);
   aspect-ratio: 1;
-  transform: translate(-50%, -50%);
+  translate: -50% -50%;
   border: 1px dashed rgba(255, 255, 255, 0.065);
   border-radius: 50%;
   pointer-events: none;
@@ -872,31 +961,6 @@
   border-top: 1px solid var(--line);
 }
 
-.project-carousel__nav {
-  display: flex;
-  gap: 0.45rem;
-}
-
-.carousel-button {
-  display: grid;
-  place-items: center;
-  width: 42px;
-  height: 42px;
-  border: 1px solid var(--line-strong);
-  border-radius: 50%;
-  color: var(--white);
-  transition:
-    border-color 220ms var(--ease-soft),
-    color 220ms var(--ease-soft),
-    background-color 220ms var(--ease-soft);
-}
-
-.carousel-button:hover {
-  border-color: var(--pink);
-  color: var(--pink);
-  background: #05ff3b0a;
-}
-
 .carousel-index {
   display: flex;
   align-items: center;
@@ -953,36 +1017,6 @@
 .carousel-dot.is-active::before {
   width: 18px;
   background: var(--pink);
-}
-
-.carousel-auto {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-}
-
-.carousel-auto__label {
-  font-family: var(--mono);
-  font-size: 0.46rem;
-  letter-spacing: 0.11em;
-  text-transform: uppercase;
-  color: var(--faint);
-}
-
-.carousel-auto__button {
-  display: grid;
-  place-items: center;
-  width: 30px;
-  height: 30px;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  color: var(--mist);
-  transition: border-color 220ms var(--ease-soft), color 220ms var(--ease-soft);
-}
-
-.carousel-auto__button:hover {
-  border-color: var(--pink);
-  color: var(--pink);
 }
 
 .project-carousel__hint {
@@ -1392,7 +1426,10 @@
 }
 
 .timeline-rail--progress {
-  background: linear-gradient(180deg, var(--pink), #05ff3b38);
+  background: linear-gradient(180deg, var(--pink), rgba(5, 255, 59, 0.22));
+  box-shadow:
+    0 0 7px rgba(5, 255, 59, 0.55),
+    0 0 18px rgba(5, 255, 59, 0.24);
   z-index: 1;
 }
 
@@ -1410,7 +1447,9 @@
 .timeline-entry__marker,
 .education-entry__marker {
   position: absolute;
-  left: 0.3rem;
+  /* The rail is 1px wide at left 4px, so its centre is 4.5px: a 9px
+     border-box diamond at left 0 sits exactly on it. */
+  left: 0;
   top: 0.42rem;
   z-index: 2;
   width: 9px;
@@ -1419,6 +1458,10 @@
   background: var(--ink);
   transform: rotate(45deg);
   box-shadow: 0 0 0 4px var(--ink);
+  transition:
+    background-color 240ms ease,
+    border-color 240ms ease,
+    box-shadow 320ms ease;
 }
 
 .education-entry__marker {
@@ -1439,6 +1482,24 @@
   margin: auto;
   margin-top: 2px;
   background: var(--ink-deep);
+}
+
+/* Diamonds ignite as the neon rail reaches them, in both timelines. */
+.timeline-entry.is-lit .timeline-entry__marker,
+.education-entry.is-lit .education-entry__marker {
+  border-color: var(--pink);
+  background: var(--pink);
+  box-shadow:
+    0 0 0 3px rgba(10, 10, 11, 0.85),
+    0 0 10px rgba(5, 255, 59, 0.9),
+    0 0 24px rgba(5, 255, 59, 0.5);
+}
+
+.education-entry.is-lit .education-entry__marker {
+  box-shadow:
+    0 0 0 3px rgba(11, 11, 12, 0.9),
+    0 0 10px rgba(5, 255, 59, 0.9),
+    0 0 24px rgba(5, 255, 59, 0.5);
 }
 
 .timeline-entry__meta,
@@ -2470,4 +2531,222 @@
 
 .site-footer__signature {
   color: rgba(255, 255, 255, 0.28);
+}
+
+/* ============================================================
+   ANIME.JS CLICK FEEDBACK — neon ring + dot bloom at the pointer
+   ============================================================ */
+
+.anime-click-ring,
+.anime-click-dot {
+  position: fixed;
+  z-index: 1200;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.anime-click-ring {
+  width: 64px;
+  height: 64px;
+  background: conic-gradient(from 0deg, #05ff3b, #ffd166, #ff1a2e, #05ff3b);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+  filter: drop-shadow(0 0 10px rgba(5, 255, 59, 0.4));
+}
+
+.anime-click-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--pink);
+}
+
+/* ============================================================
+   CUSTOM POINTER — neon dot + conic halo that follows the mouse
+   ============================================================ */
+
+html.cursor-fx-on *:not(input):not(textarea):not(select) {
+  cursor: none;
+}
+
+.cursor-fx__aura,
+.cursor-fx__dot,
+.cursor-fx__ring {
+  position: fixed;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: translate, scale, opacity;
+}
+
+.cursor-fx__aura {
+  z-index: 1399;
+  width: 120px;
+  height: 120px;
+  opacity: 0.55;
+  background:
+    radial-gradient(circle at 36% 34%, rgba(255, 45, 155, 0.85), transparent 58%),
+    radial-gradient(circle at 66% 64%, rgba(34, 230, 255, 0.75), transparent 58%),
+    radial-gradient(circle, rgba(47, 123, 255, 0.6), transparent 72%);
+  filter: blur(12px) saturate(1.35);
+  mix-blend-mode: screen;
+}
+
+.cursor-fx__dot {
+  z-index: 1400;
+  width: 7px;
+  height: 7px;
+  background: radial-gradient(circle, #ffffff 0 28%, #ff2d9b 74%);
+  box-shadow:
+    0 0 5px rgba(255, 255, 255, 0.95),
+    0 0 12px rgba(255, 45, 155, 1),
+    0 0 26px rgba(255, 45, 155, 0.7),
+    0 0 48px rgba(47, 123, 255, 0.4);
+}
+
+.cursor-fx__ring {
+  z-index: 1400;
+  width: 42px;
+  height: 42px;
+  opacity: 0.9;
+  background: conic-gradient(from 0deg, #ff2d9b, #2f7bff, #22e6ff, #ff2d9b);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 3px), #000 calc(100% - 2px));
+  animation: cursor-fx-spin 3.4s linear infinite;
+  filter:
+    drop-shadow(0 0 4px rgba(255, 45, 155, 0.95))
+    drop-shadow(0 0 12px rgba(47, 123, 255, 0.6))
+    drop-shadow(0 0 24px rgba(34, 230, 255, 0.45));
+}
+
+@keyframes cursor-fx-spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+/* Over the motion frame: no bloom, and the remaining core loses its haze. */
+.cursor-fx--quiet .cursor-fx__dot {
+  box-shadow:
+    0 0 3px rgba(255, 255, 255, 0.6),
+    0 0 7px rgba(255, 45, 155, 0.55);
+}
+
+.cursor-fx--quiet .cursor-fx__ring {
+  filter: drop-shadow(0 0 3px rgba(34, 230, 255, 0.3));
+}
+
+/* ============================================================
+   FIELD-NOTE QUOTE CARD — opens on the Y / YAATHARTH frame
+   ============================================================ */
+
+.quote-card-anchor {
+  position: fixed;
+  z-index: 1300;
+  pointer-events: none;
+}
+
+.quote-card {
+  position: relative;
+  width: min(360px, calc(100vw - 2rem));
+  padding: 1.05rem 1.2rem 1.35rem;
+  border-radius: 14px;
+  border: 1px solid rgba(5, 255, 59, 0.2);
+  background:
+    radial-gradient(120% 140% at 12% 0%, rgba(5, 255, 59, 0.12), transparent 55%),
+    radial-gradient(120% 160% at 88% 100%, rgba(255, 26, 46, 0.14), transparent 62%),
+    rgba(10, 11, 12, 0.93);
+  box-shadow:
+    0 26px 60px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(255, 255, 255, 0.03),
+    0 0 34px rgba(5, 255, 59, 0.12);
+  backdrop-filter: blur(14px);
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+
+.quote-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(from 0deg, #05ff3b, #ffd166, #ff1a2e, #05ff3b);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  opacity: 0.55;
+  pointer-events: none;
+  animation: quote-card-hue 5s linear infinite;
+}
+
+@keyframes quote-card-hue {
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
+
+.quote-card__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.52rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--pink);
+}
+
+.quote-card__spark {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--pink);
+  box-shadow: 0 0 10px rgba(5, 255, 59, 0.9);
+}
+
+.quote-card__text {
+  margin: 0.8rem 0 1rem;
+  font-family: var(--body);
+  font-weight: 600;
+  font-size: 1.02rem;
+  line-height: 1.55;
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
+  color: #f2f5f1;
+}
+
+.quote-card__timer {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 9px;
+  height: 2px;
+  border-radius: 2px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.quote-card__timer-fill {
+  display: block;
+  height: 100%;
+  transform-origin: left center;
+  background: linear-gradient(90deg, var(--pink), #ffd166, #ff1a2e);
+  box-shadow: 0 0 8px rgba(5, 255, 59, 0.5);
+}
+
+.hero__emblem:focus-visible,
+.video-type:focus-visible,
+.brand:focus-visible {
+  outline: 2px solid var(--pink);
+  outline-offset: 4px;
+  border-radius: 8px;
 }

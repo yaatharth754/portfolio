@@ -10,44 +10,17 @@
 }
 
 .glass-logo__y {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: glass-y-turn 8s linear infinite;
-  filter: drop-shadow(5px 8px 7px rgba(180, 192, 202, .35));
+  filter: drop-shadow(0 6px 9px rgba(0, 0, 0, .42)) drop-shadow(0 0 14px rgba(255, 30, 30, .09));
   backface-visibility: visible;
 }
 
 .glass-logo__halo {
   transform-box: fill-box;
   transform-origin: center;
-  animation: glass-halo-pulse 3.6s ease-in-out infinite;
 }
 
 .glass-logo__shine {
-  animation: glass-metal-shine 8s ease-in-out infinite;
-}
-
-@keyframes glass-metal-shine {
-  0%, 18%, 78%, 100% { opacity: .06; }
-  42%, 58% { opacity: .5; }
-}
-
-@keyframes glass-y-turn {
-  from { transform: perspective(520px) rotateY(0deg); }
-  to { transform: perspective(520px) rotateY(360deg); }
-}
-
-@keyframes glass-halo-pulse {
-  0%, 100% { opacity: .74; filter: drop-shadow(0 0 5px rgba(50, 102, 196, .5)); }
-  50% { opacity: 1; filter: drop-shadow(0 0 15px rgba(55, 112, 214, .88)); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .glass-logo__y,
-  .glass-logo__halo,
-  .glass-logo__shine {
-    animation: none;
-  }
+  opacity: .14;
 }
 
 /* Parallax layers are driven by --px / --py on the frame. The frame itself
@@ -580,7 +553,7 @@
   width: 56%;
   height: 28%;
   transform: translateX(-50%);
-  background: radial-gradient(ellipse at center, rgba(239, 255, 0, 0.16), transparent 68%);
+  background: radial-gradient(ellipse at center, rgba(255, 38, 38, 0.22), transparent 68%);
   filter: blur(10px);
   pointer-events: none;
 }
