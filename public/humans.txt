@@ -12,5 +12,5 @@
   Motion: Framer Motion
   Type: Bodoni Moda, Manrope, DM Mono
   Palette: Black #08090A, Glass White #FFFFFF, Green #05ff3b
-  Signature colour: Dark Blue #244C9A, used for the metallic Y halo
+  Signature colour: Neon red #FF1A2E, used for the metallic Y halo
   Video: Original canvas-drawn night scene, generated for this portfolio

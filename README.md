@@ -86,12 +86,12 @@ Expected June 2027 · CGPA **8.85 / 10**
 
 | Where | Link |
 | --- | --- |
-| Portfolio | [`https://your-portfolio-link.com`](https://your-portfolio-link.com) |
+| Portfolio | [https://myselfyaatharth.vercel.app](https://your-portfolio-link.com) |
 | GitHub | [github.com/yaatharth754](https://github.com/yaatharth754) |
 | LinkedIn | [linkedin.com/in/yaatharth754](https://www.linkedin.com/in/yaatharth754) |
 | Email | [yaatharth754@gmail.com](mailto:yaatharth754@gmail.com) |
 | Resume | [Yaatharth_Bawankar_Resume.pdf](./public/Yaatharth_Bawankar_Resume.pdf) |
-| X / Twitter | [`https://x.com/your-handle`](https://x.com/your-handle) |
+
 
 ---
 
