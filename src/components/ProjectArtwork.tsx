@@ -1,9 +1,11 @@
+import { memo } from 'react';
+
 type ProjectArtworkProps = {
   art: 'face' | 'pose' | 'docs';
   id: string;
 };
 
-export default function ProjectArtwork({ art, id }: ProjectArtworkProps) {
+function ProjectArtwork({ art, id }: ProjectArtworkProps) {
   const patternId = `art-${id}-grid`;
 
   return (
@@ -177,3 +179,7 @@ function DocsArt() {
     </g>
   );
 }
+
+/* The artwork never changes for a given project, so skip re-rendering this
+   heavy SVG tree every time the carousel advances. */
+export default memo(ProjectArtwork);

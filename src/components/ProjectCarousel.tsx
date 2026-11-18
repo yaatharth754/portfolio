@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import type { CSSProperties, PointerEvent as ReactPointerEvent } from 'react';
+import type { PointerEvent as ReactPointerEvent } from 'react';
 import { motion, useInView, useReducedMotion } from 'framer-motion';
 import {
   ArrowUpRight,
@@ -17,9 +17,13 @@ const AUTO_MS = 3000;
 
 export default function ProjectCarousel({ onSelectProject }: ProjectCarouselProps) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const [hoverPaused, setHoverPaused] = useState(false);
+  /* Bumped by manual navigation so the autoplay countdown restarts fresh. */
+  const [restartKey, setRestartKey] = useState(0);
   const stageRef = useRef<HTMLDivElement>(null);
-  const inView = useInView(stageRef, { amount: 0.3 });
+  /* Used only to skip the slide animation while the section is off-screen.
+     Autoplay itself keeps running from page load, so the carousel is already
+     moving when it comes into view. */
+  const stageInView = useInView(stageRef, { amount: 0.15 });
   const reducePreference = usePrefersReducedMotion();
   const reduceMotion = useReducedMotion();
   const isMobile = useMediaQuery('(max-width: 767px)');
@@ -28,20 +32,25 @@ export default function ProjectCarousel({ onSelectProject }: ProjectCarouselProp
   const isAutoRunning = !reduce;
 
   const go = (direction: 1 | -1) => {
+    setRestartKey((key) => key + 1);
     setActiveIndex((index) => (index + direction + projects.length) % projects.length);
   };
 
   const goTo = (index: number) => {
+    setRestartKey((key) => key + 1);
     setActiveIndex(index);
   };
 
+  /* Autoplay runs continuously — hover never pauses it, and it starts on page
+     load rather than waiting for the section to scroll into view or for the
+     pointer to move. Only reduced-motion turns it off. */
   useEffect(() => {
-    if (!isAutoRunning || hoverPaused || !inView) return;
+    if (!isAutoRunning) return;
     const timer = window.setInterval(() => {
       setActiveIndex((index) => (index + 1) % projects.length);
     }, AUTO_MS);
     return () => window.clearInterval(timer);
-  }, [hoverPaused, inView, isAutoRunning]);
+  }, [isAutoRunning, restartKey]);
 
   const dragStart = useRef<{ x: number; y: number; id: number } | null>(null);
   const suppressClick = useRef(false);
@@ -80,10 +89,6 @@ export default function ProjectCarousel({ onSelectProject }: ProjectCarouselProp
       role="region"
       aria-roledescription="carousel"
       aria-label="Selected project gallery"
-      onMouseEnter={() => setHoverPaused(true)}
-      onMouseLeave={() => setHoverPaused(false)}
-      onFocusCapture={() => setHoverPaused(true)}
-      onBlurCapture={() => setHoverPaused(false)}
       onKeyDown={(event) => {
         if (event.key === 'ArrowLeft') {
           event.preventDefault();
@@ -132,8 +137,8 @@ export default function ProjectCarousel({ onSelectProject }: ProjectCarouselProp
                 initial={false}
                 animate={target}
                 transition={
-                  reduce
-                    ? { duration: 0.01 }
+                  reduce || !stageInView
+                    ? { duration: 0 }
                     : { duration: 0.95, ease: [0.22, 1, 0.36, 1] }
                 }
                 aria-label={`${project.title} — ${project.category}`}
@@ -215,12 +220,7 @@ export default function ProjectCarousel({ onSelectProject }: ProjectCarouselProp
         <div
           className="carousel-timer"
           aria-hidden="true"
-          style={
-            {
-              '--timer-state': hoverPaused || !inView ? 'paused' : 'running',
-            } as CSSProperties
-          }
-          key={activeIndex}
+          key={`${activeIndex}-${restartKey}`}
         >
           <span className="carousel-timer__fill" />
         </div>

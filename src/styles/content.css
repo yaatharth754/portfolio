@@ -716,14 +716,11 @@
   pointer-events: auto;
   will-change: transform;
   backface-visibility: hidden;
-  transition: border-color 300ms var(--ease-soft), box-shadow 400ms var(--ease-soft);
+  transition: border-color 300ms var(--ease-soft);
 }
 
 .project-card.is-active {
   border-color: #05ff3b4c;
-  box-shadow:
-    0 44px 100px rgba(0, 0, 0, 0.55),
-    0 0 0 1px #05ff3b14;
 }
 
 .project-card:hover {
@@ -1061,7 +1058,6 @@
   background: var(--pink);
   transform-origin: 0 50%;
   animation: carousel-timer-fill 3s linear forwards;
-  animation-play-state: var(--timer-state, running);
 }
 
 @keyframes carousel-timer-fill {
