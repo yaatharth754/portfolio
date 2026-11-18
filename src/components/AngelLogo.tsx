@@ -1,10 +1,10 @@
 ﻿import { useId } from 'react';
 
-type Props = { variant?: 'full' | 'compact' | 'footer'; className?: string; title?: string; decorative?: boolean };
+type Props = { variant?: 'full' | 'compact'; className?: string; title?: string; decorative?: boolean };
 
 /* Sculpted mirror-chrome Y: capped arms, wide red V, long stem, dark plinth.
    Geometry is authored on the 750 Ã— 1000 reference grid and displayed through a
-   square, centred viewBox so every placement (nav, hero, footer) shares
+   square, centred viewBox so every placement (nav, hero) shares
    one consistent mark. */
 const PLATE =
   'M166 328 L342 328 L342 346 C316 348 316 368 330 392 L392 514 L420 392 C434 368 434 348 408 346 L408 328 L584 328 L584 346 C552 348 538 362 522 388 L432 578 L432 766 C432 788 448 796 495 798 L495 816 L275 816 L275 798 C326 796 342 788 342 766 L342 578 L228 388 C212 362 198 348 166 346 Z';

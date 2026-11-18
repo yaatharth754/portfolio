@@ -239,19 +239,6 @@
   .experience__certs {
     border-top: 1px solid var(--line);
   }
-
-  .site-footer__grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 2.2rem 3rem;
-  }
-
-  .site-footer__statement {
-    grid-column: 1 / -1;
-  }
-
-  .site-footer__statement p {
-    max-width: 50ch;
-  }
 }
 
 /* ---------- Small tablet / large phone ---------- */
@@ -503,29 +490,6 @@
     font-size: clamp(1.55rem, 5vw, 1.95rem);
   }
 
-  .site-footer {
-    padding-top: 3.2rem;
-  }
-
-  .site-footer__top {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 1.2rem;
-  }
-
-  .site-footer__top-link {
-    align-self: flex-start;
-  }
-
-  .site-footer__bottom {
-    flex-wrap: wrap;
-    gap: 0.6rem 1.2rem;
-  }
-
-  .site-footer__signature {
-    display: none;
-  }
-
   .mobile-menu__inner {
     padding-top: calc(var(--nav-height) + 1.8rem);
   }
@@ -735,25 +699,6 @@
   .timeline-rail {
     left: 3px;
   }
-
-  .site-footer__grid {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 1.8rem;
-  }
-
-  .site-footer__statement {
-    grid-column: auto;
-  }
-
-  .site-footer__nav ul {
-    grid-template-columns: 1fr 1fr;
-    max-width: 300px;
-  }
-
-  .site-footer__bottom {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 }
 
 @media (max-width: 520px) {
@@ -778,16 +723,6 @@
   .brand__sub {
     font-size: 0.42rem;
     letter-spacing: 0.09em;
-  }
-
-  .resume-pill {
-    padding: 0 0.72rem;
-    height: 34px;
-    font-size: 0.48rem;
-  }
-
-  .resume-pill__verb {
-    display: none;
   }
 
   .menu-button {
@@ -916,23 +851,6 @@
     display: none;
   }
 
-  .site-footer__brand {
-    align-items: flex-start;
-  }
-
-  .site-footer__mark {
-    width: 44px;
-    height: 44px;
-  }
-
-  .site-footer__eyebrow {
-    font-size: 0.4rem;
-  }
-
-  .site-footer__name {
-    font-size: 1.5rem;
-  }
-
   .mobile-menu__links a {
     font-size: clamp(1.65rem, 8.6vw, 2.6rem);
     gap: 0.7rem;
@@ -1032,7 +950,6 @@
   .site-header,
   .hero__ambient,
   .hero__aside,
-  .site-footer__top-link,
   .project-carousel__controls,
   .project-carousel__hint,
   .carousel-timer {
@@ -1048,8 +965,7 @@
   .skills,
   .projects,
   .education,
-  .contact,
-  .site-footer {
+  .contact {
     background: #ffffff;
   }
 }

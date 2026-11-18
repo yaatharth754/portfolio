@@ -129,39 +129,6 @@
   gap: 0.65rem;
 }
 
-.resume-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.55rem;
-  height: 36px;
-  padding: 0 0.95rem;
-  border: 1px solid var(--line-strong);
-  border-radius: 999px;
-  font-family: var(--mono);
-  font-size: 0.53rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--white);
-  transition:
-    border-color 240ms var(--ease-soft),
-    color 240ms var(--ease-soft),
-    background-color 240ms var(--ease-soft);
-}
-
-.resume-pill svg {
-  transition: transform 300ms var(--ease-out);
-}
-
-.resume-pill:hover {
-  border-color: var(--pink-line);
-  color: var(--pink);
-  background: #05ff3b0a;
-}
-
-.resume-pill:hover svg {
-  transform: translateY(2px);
-}
-
 .menu-button {
   display: none;
   align-items: center;

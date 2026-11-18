@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { ArrowDownToLine, ArrowUpRight, Github, Linkedin, Mail, Menu, X } from 'lucide-react';
+import { ArrowUpRight, Github, Linkedin, Mail, Menu, X } from 'lucide-react';
 import AngelLogo from './AngelLogo';
 import { navItems, profile } from '../data/profile';
 import { useActiveSection } from '../hooks/useActiveSection';
@@ -85,17 +85,6 @@ export default function Navbar() {
           </nav>
 
           <div className="site-header__actions">
-            <a
-              className="resume-pill"
-              href={profile.resume}
-              download={profile.resumeName}
-              aria-label="Download Resume — Yaatharth Bawankar PDF"
-            >
-              <span className="resume-pill__label">
-                <span className="resume-pill__verb">Download </span>Resume
-              </span>
-              <ArrowDownToLine size={14} strokeWidth={1.7} aria-hidden="true" />
-            </a>
             <button
               className="menu-button"
               type="button"
@@ -153,14 +142,6 @@ export default function Navbar() {
               </nav>
 
               <div className="mobile-menu__bottom">
-                <a
-                  className="btn btn--solid"
-                  href={profile.resume}
-                  download={profile.resumeName}
-                >
-                  <span>Download Resume</span>
-                  <ArrowDownToLine size={16} strokeWidth={1.7} aria-hidden="true" />
-                </a>
                 <div className="mobile-menu__socials">
                   <a href={profile.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
                     <Github size={18} strokeWidth={1.5} aria-hidden="true" />

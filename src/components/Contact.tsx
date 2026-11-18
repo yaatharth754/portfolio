@@ -1,4 +1,4 @@
-import { ArrowUpRight, BriefcaseBusiness, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowUpRight, FileText, Github, Linkedin, Mail } from 'lucide-react';
 import Reveal from './Reveal';
 import { profile } from '../data/profile';
 
@@ -34,12 +34,13 @@ const cardDetails = [
   },
   {
     number: '04',
-    title: 'COLLABORATE',
-    description: 'Have an internship opportunity, project idea, or something interesting to build together?',
-    detail: 'Ideas welcome',
-    action: "LET'S TALK",
-    href: 'mailto:' + profile.email,
-    icon: BriefcaseBusiness,
+    title: 'RESUME',
+    description: 'A one-page summary of my experience, projects, and technical skills.',
+    detail: profile.resumeName,
+    action: 'DOWNLOAD PDF',
+    href: profile.resume,
+    download: profile.resumeName,
+    icon: FileText,
   },
 ] as const;
 
@@ -73,6 +74,7 @@ export default function Contact() {
                 <a
                   className="contact-card"
                   href={card.href}
+                  download={'download' in card ? card.download : undefined}
                   target={'external' in card ? '_blank' : undefined}
                   rel={'external' in card ? 'noopener noreferrer' : undefined}
                 >

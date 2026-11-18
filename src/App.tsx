@@ -9,7 +9,6 @@ import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Education from './components/Education';
 import Contact from './components/Contact';
-import Footer from './components/Footer';
 import ProjectDetailModal from './components/ProjectDetailModal';
 import type { Project } from './data/projects';
 import { useClickFX } from './hooks/useClickFX';
@@ -42,8 +41,6 @@ export default function App() {
         <Education />
         <Contact />
       </main>
-
-      <Footer />
 
       <QuoteCard />
 
